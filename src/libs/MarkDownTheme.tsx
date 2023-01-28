@@ -11,7 +11,7 @@ export const markdownTheme = {
   h1: (props: any) => {
     const { children } = props;
     return (
-      <Text fontSize="6xl" sx={hStyle}>
+      <Text fontSize="3xl" sx={hStyle}>
         {children}
       </Text>
     );
@@ -19,7 +19,7 @@ export const markdownTheme = {
   h2: (props: any) => {
     const { children } = props;
     return (
-      <Text fontSize="5xl" sx={hStyle}>
+      <Text fontSize="3xl" sx={hStyle}>
         {children}
       </Text>
     );
@@ -27,7 +27,7 @@ export const markdownTheme = {
   h3: (props: any) => {
     const { children } = props;
     return (
-      <Text fontSize="4xl" sx={hStyle}>
+      <Text fontSize="xl" sx={hStyle}>
         {children}
       </Text>
     );
@@ -35,7 +35,7 @@ export const markdownTheme = {
   h4: (props: any) => {
     const { children } = props;
     return (
-      <Text fontSize="3xl" sx={hStyle}>
+      <Text fontSize="lg" sx={hStyle}>
         {children}
       </Text>
     );
@@ -43,7 +43,7 @@ export const markdownTheme = {
   h5: (props: any) => {
     const { children } = props;
     return (
-      <Text fontSize="2xl" sx={hStyle}>
+      <Text fontSize="md" sx={hStyle}>
         {children}
       </Text>
     );
@@ -51,7 +51,7 @@ export const markdownTheme = {
   h6: (props: any) => {
     const { children } = props;
     return (
-      <Text fontSize="xl" sx={hStyle}>
+      <Text fontSize="sm" sx={hStyle}>
         {children}
       </Text>
     );

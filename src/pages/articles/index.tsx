@@ -15,8 +15,9 @@ export default function Article() {
       <Flex>
         <Textarea
           sx={texteAreaStyle}
-          placeholder="Here is a sample placeholder"
+          placeholder="マークダウン記法で記述しよう！"
           value={input}
+          focusBorderColor="gray.200"
           onChange={(e) => setInput(e.target.value)}
         />
         <ReactMarkdown
@@ -38,5 +39,4 @@ const texteAreaStyle = {
   borderRadius: 0,
   outline: "none",
   boxShadow: "none",
-  focusBorderColor: "gray.200",
 };
