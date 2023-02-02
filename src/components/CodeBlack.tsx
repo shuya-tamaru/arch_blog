@@ -3,7 +3,6 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { escapeHtml } from "../libs/EscapeHtml";
 import classes from "../styles/textArea.module.css";
-console.log(classes);
 
 const CodeBlack: CodeComponent = ({ inline, className, children }) => {
   if (inline) {

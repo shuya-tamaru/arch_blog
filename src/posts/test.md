@@ -1,4 +1,4 @@
-![](https://cdn.searchenginejournal.com/wp-content/uploads/2022/06/image-search-1600-x-840-px-62c6dc4ff1eee-sej.png)
+![title w:600px](https://cdn.searchenginejournal.com/wp-content/uploads/2022/06/image-search-1600-x-840-px-62c6dc4ff1eee-sej.png)
 
 # h1 タイトル
 
@@ -11,6 +11,33 @@
 ##### h5 タイトル
 
 ###### h6 タイトル
+
+~~取消線を引く~~
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+$$\rho \frac{D \bm{u}}{Dt} = -\nabla p + (\lambda + \mu ) \nabla (\nabla \cdot \bm{u}) + \mu \nabla ^{2} \bm{u} +\rho \tilde{\bm{F}}$$
+
+ssssssss
+ddddd
+
+- Lists
+- [ ] todo
+- [x] done
+
+A table:
+
+| TH  | TH  |
+| --- | --- |
+| TD  | TD  |
+| TD  | TD  |
+
+| TH  |
+| --- |
+| TD  |
+| TD  |
 
 ```js:index.tsx
 import { CodeComponent } from "react-markdown/lib/ast-to-react";
