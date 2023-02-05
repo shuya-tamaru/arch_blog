@@ -8,16 +8,16 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-
-import classes from "../../styles/textArea.module.css";
-import "../../styles/Home.module.css";
-import { useEffect, useRef, useState } from "react";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import { markdownTheme } from "../../libs/MarkDownTheme";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+
+import classes from "../../styles/textArea.module.css";
+import "../../styles/Home.module.css";
+import { useEffect, useRef, useState } from "react";
+import { markdownTheme } from "../../libs/MarkDownTheme";
 
 export default function Article() {
   const [input, setInput] = useState<string>("");

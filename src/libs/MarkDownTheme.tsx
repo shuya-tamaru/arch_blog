@@ -1,14 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Image,
-  Table,
-  Td,
-  Text,
-  Th,
-  VStack,
-} from "@chakra-ui/react";
+import { Heading, Image, Td, Text, Th, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import CodeBlack from "../components/CodeBlack";
 
@@ -91,33 +81,42 @@ export const markdownTheme = {
     const { children } = props;
     return <Td border="1px solid #dcdcdc">{children}</Td>;
   },
-  img: (props: any) => {
-    const { children, src, alt } = props;
-    const text = alt as string;
-    const splitText = text.split("w:");
-    const title = splitText.length > 0 ? splitText[0] : undefined;
-    const width = splitText.length > 1 ? splitText[1] : undefined;
+  p: (props: any) => {
+    const { children } = props;
 
-    return (
-      <>
-        <VStack justify={"center"}>
-          <Image
-            display={"inline-block"}
-            w={width}
-            src={src}
-            border="1px solid #dcdcdc"
-          >
-            {children}
-          </Image>
-          {title && (
-            <Text w={width} textAlign={"center"} fontSize={"sm"} color={"#777"}>
-              {title}
-            </Text>
-          )}
-        </VStack>
-      </>
-    );
+    const nodes = children.map((ele: any, index: string) => {
+      if (ele.key && ele.key.indexOf("img") !== -1) {
+        const { src, alt } = ele.props;
+        const text = alt as string;
+        const splitText = text.split("w:");
+        const title = splitText.length > 0 ? splitText[0] : undefined;
+        const width = splitText.length > 1 ? splitText[1] : undefined;
+        return (
+          <VStack key={index} justify={"center"}>
+            <Image
+              display={"inline-block"}
+              w={width}
+              src={src}
+              border="1px solid #dcdcdc"
+            />
+            {title && (
+              <Text
+                w={width}
+                textAlign={"center"}
+                fontSize={"sm"}
+                color={"#777"}
+              >
+                {title}
+              </Text>
+            )}
+          </VStack>
+        );
+      } else {
+        return <Text key={index}>{ele}</Text>;
+      }
+    });
+
+    return nodes;
   },
-
   code: CodeBlack,
 };
