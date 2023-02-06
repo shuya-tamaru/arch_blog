@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Input,
-  Stack,
-  Textarea,
-} from "@chakra-ui/react";
+import { Box, Flex, Stack, Textarea } from "@chakra-ui/react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import remarkGfm from "remark-gfm";
@@ -18,6 +10,9 @@ import classes from "../../styles/textArea.module.css";
 import "../../styles/Home.module.css";
 import { useEffect, useRef, useState } from "react";
 import { markdownTheme } from "../../libs/MarkDownTheme";
+import SubmidButtons from "../../components/SubmidButtons";
+import Header from "../../components/Header";
+import TitleAndTagInput from "../../components/TitleAndTagInput";
 
 export default function Article() {
   const [input, setInput] = useState<string>("");
@@ -25,48 +20,57 @@ export default function Article() {
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
+    const textArea = document.querySelector("#editor") as HTMLTextAreaElement;
+    const preview = document.querySelector("#mdPrev") as HTMLDivElement;
+    const bb = preview.getBoundingClientRect();
+    const pos = textArea.scrollTop;
+    textArea.innerHTML;
+    textArea.addEventListener("scroll", () => {
+      const rows = textArea.value.split(`\n`);
+      const currnetTextAreaHeight = textArea.clientHeight;
+      const scrollOffsetY = textArea.scrollTop;
+      const maxHeight = textArea.scrollHeight;
+      const rowSize = rows ? maxHeight / rows.length : undefined;
+      const currentTopRows = rowSize && Math.floor(scrollOffsetY / rowSize);
+      const currentRowContents = rows[currentTopRows as number];
+      const h = preview.offsetTop;
+
+      if (currentRowContents.indexOf(serch) !== -1) {
+        const tag = currentRowContents.split(" ");
+        const tagLength = tag[0].length;
+        const tagName = "#".repeat(tagLength) + " ";
+        const splitHead = currentRowContents.split(tagName);
+        const title = splitHead[1];
+
+        const html: HTMLElement[] = Array.prototype.slice.call(
+          preview.getElementsByTagName(`h${tagLength}`)
+        );
+
+        const targetDom = html.filter((element) => {
+          if (element.innerHTML === title) {
+            return element;
+          }
+        });
+        const target = targetDom[0];
+        target.scrollIntoView({
+          // behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    });
   }, []);
 
   return (
     <>
-      <Box
-        bg={"teal.400"}
-        color="#fff"
-        fontWeight={800}
-        textAlign={"center"}
-        fontSize={"3xl"}
-        lineHeight="60px"
-        w="100%"
-        h="60px"
-        position="sticky"
-      >
-        header
-      </Box>
+      <Header />
       <Stack
         spacing={"10px"}
         bg="#f5f5f5"
         alignItems={"center"}
         h="calc(100vh - 63px)"
       >
-        <Input
-          w="90%"
-          h="40px"
-          bg="#fff"
-          boxShadow={"xl"}
-          variant="undefined"
-          fontWeight="600"
-          placeholder="タイトル："
-          mt="10px"
-        />
-        <Input
-          w="90%"
-          h="40px"
-          bg="#fff"
-          boxShadow={"xl"}
-          variant="undefined"
-          fontWeight="600"
-          placeholder="タグを入力："
-        />
+        <TitleAndTagInput />
         <Flex
           w="100%"
           h="calc(100vh - 250px)"
@@ -75,6 +79,7 @@ export default function Article() {
           pb="20px"
         >
           <Textarea
+            id={"editor"}
             ref={ref}
             sx={texteAreaStyle}
             placeholder="マークダウン記法で記述しよう！"
@@ -82,29 +87,31 @@ export default function Article() {
             variant="undefined"
             onChange={(e) => setInput(e.target.value)}
           />
-          <ReactMarkdown
-            className={classes.markdown}
-            children={input}
-            components={ChakraUIRenderer(markdownTheme)}
-            remarkPlugins={[remarkGfm, remarkMath]}
-            rehypePlugins={[rehypeKatex]}
-          />
+          <Box
+            id="mdPrev"
+            w="45%"
+            height="100%"
+            p="20px"
+            bg="#fff"
+            scrollPaddingTop={"100px"}
+            overflowY={"scroll"}
+            borderRadius={"10px"}
+          >
+            <ReactMarkdown
+              className={classes.markdown}
+              children={input}
+              components={ChakraUIRenderer(markdownTheme)}
+              remarkPlugins={[remarkGfm, remarkMath]}
+              rehypePlugins={[rehypeKatex]}
+            />
+          </Box>
         </Flex>
-        <Box h="50px" w="90%">
-          <HStack spacing="10px" justify={"end"}>
-            <Button w="100px" variant="outline" colorScheme="red">
-              下書き保存
-            </Button>
-            <Button w="100px" colorScheme="red">
-              投稿
-            </Button>
-          </HStack>
-        </Box>
+        <SubmidButtons />
       </Stack>
     </>
   );
 }
-
+const serch = "# h";
 const texteAreaStyle = {
   w: "45%",
   h: "100%",
