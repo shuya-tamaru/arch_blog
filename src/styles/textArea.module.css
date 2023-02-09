@@ -1,5 +1,7 @@
 .markdown {
   white-space: pre-wrap;
+  scroll-behavior: smooth;
+  height: "calc(100% - 25px)";
 }
 
 .codeBlockFileNameContainer .codeBlockFilename {
