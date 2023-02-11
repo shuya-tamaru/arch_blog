@@ -72,14 +72,18 @@ export const markdownTheme = {
   th: (props: any) => {
     const { children } = props;
     return (
-      <Th fontSize="xl" border="1px solid #dcdcdc" bg="#f5f5f5">
+      <th style={{ background: "#f5f5f5", border: "1px solid #dcdcdc" }}>
         {children}
-      </Th>
+      </th>
     );
   },
   td: (props: any) => {
     const { children } = props;
-    return <Td border="1px solid #dcdcdc">{children}</Td>;
+    return (
+      <td style={{ border: "1px solid #dcdcdc", padding: "10px" }}>
+        {children}
+      </td>
+    );
   },
   p: (props: any) => {
     const { children } = props;

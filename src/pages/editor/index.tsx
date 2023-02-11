@@ -14,7 +14,7 @@ import SubmidButtons from "../../components/SubmidButtons";
 import Header from "../../components/Header";
 import TitleAndTagInput from "../../components/TitleAndTagInput";
 
-export default function Article() {
+export default function Editor() {
   const [input, setInput] = useState<string>("");
   const [scrollSync, setScrollSync] = useState<boolean>(true);
 
