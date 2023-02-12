@@ -11,7 +11,6 @@ const Header = () => {
       lineHeight="60px"
       w="100%"
       h="60px"
-      position="sticky"
     >
       header
     </Box>

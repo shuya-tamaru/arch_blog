@@ -13,6 +13,7 @@ import { markdownTheme } from "../../libs/MarkDownTheme";
 import SubmidButtons from "../../components/SubmidButtons";
 import Header from "../../components/Header";
 import TitleAndTagInput from "../../components/TitleAndTagInput";
+import MarkDownPreview from "../../components/MarkDownPreview";
 
 export default function Editor() {
   const [input, setInput] = useState<string>("");
@@ -160,13 +161,7 @@ export default function Editor() {
               borderRadius={"0px 10px 10px 0px"}
               bg="#fff"
             >
-              <ReactMarkdown
-                className={classes.markdown}
-                children={input}
-                components={ChakraUIRenderer(markdownTheme)}
-                remarkPlugins={[remarkGfm, remarkMath]}
-                rehypePlugins={[rehypeKatex]}
-              />
+              <MarkDownPreview input={input} />
             </Box>
           </Box>
         </Flex>
