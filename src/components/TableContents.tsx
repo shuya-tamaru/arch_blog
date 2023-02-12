@@ -1,47 +1,45 @@
-import { Box, VStack } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Box, VStack, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
+import tocbot from "tocbot";
+import { Noto_Sans_JP } from "@next/font/google";
+import classes from "../styles/tocbot.module.css";
+
+const notoSansJp = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function TableContents() {
-  const [headers, setHeaders] = useState<Element[]>([]);
-
   useEffect(() => {
-    const head = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
-    const elements = Array.from(head);
-    setHeaders(elements);
-  }, []);
-
-  const handleScroll = (head: Element) => {
-    head.scrollIntoView({
-      block: "start",
-      behavior: "smooth",
+    tocbot.init({
+      tocSelector: ".toc",
+      contentSelector: ".contents",
+      headingSelector: "h1, h2, h3, h4",
+      hasInnerContainers: true,
     });
-  };
+
+    return () => tocbot.destroy();
+  }, []);
 
   return (
     <VStack>
-      <Box position={"sticky"} top="20px">
-        {headers.map((head, index) => {
-          const offset = index === 0 || head.tagName === "H1" ? 0 : 5;
-          return (
-            <Box
-              fontSize={"md"}
-              key={index}
-              onClick={() => handleScroll(head)}
-              pl={offset}
-              w="100%"
-              fontWeight="600"
-              cursor={"pointer"}
-              color="#666"
-              _hover={{
-                color: "teal",
-                borderRadius: "5px",
-              }}
-            >
-              {index === 0 ? "タイトル" : head.innerHTML}
-            </Box>
-          );
-        })}
+      <Box
+        position={"sticky"}
+        sx={tableContainerStyle}
+        className={notoSansJp.className}
+      >
+        <Text textAlign={"center"} fontWeight="800" mb="5px">
+          目&emsp;次
+        </Text>
+        <Box fontSize={"sm"} className={`toc`}></Box>
       </Box>
     </VStack>
   );
 }
+
+const tableContainerStyle = {
+  top: "20px",
+  bg: "#fff",
+  p: "20px",
+  borderRadius: "5px",
+};

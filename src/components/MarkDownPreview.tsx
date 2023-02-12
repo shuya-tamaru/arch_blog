@@ -13,7 +13,7 @@ type Props = {
 export default function MarkDownPreview({ input }: Props) {
   return (
     <ReactMarkdown
-      className={classes.markdown}
+      className={`${classes.markdown} contents`}
       children={input}
       components={ChakraUIRenderer(markdownTheme)}
       remarkPlugins={[remarkGfm, remarkMath]}

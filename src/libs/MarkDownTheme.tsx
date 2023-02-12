@@ -12,7 +12,7 @@ export const markdownTheme = {
   h1: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h1" fontSize="3xl" sx={hStyle}>
+      <Heading id={children} as="h1" fontSize="3xl" sx={hStyle}>
         {children}
       </Heading>
     );
@@ -20,7 +20,7 @@ export const markdownTheme = {
   h2: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h2" fontSize="2xl" sx={hStyle}>
+      <Heading id={children} as="h2" fontSize="2xl" sx={hStyle}>
         {children}
       </Heading>
     );
@@ -28,7 +28,7 @@ export const markdownTheme = {
   h3: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h3" fontSize="xl" sx={hStyle}>
+      <Heading id={children} as="h3" fontSize="xl" sx={hStyle}>
         {children}
       </Heading>
     );
@@ -36,7 +36,7 @@ export const markdownTheme = {
   h4: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h4" fontSize="lg" sx={hStyle}>
+      <Heading id={children} as="h4" fontSize="lg" sx={hStyle}>
         {children}
       </Heading>
     );
@@ -44,7 +44,7 @@ export const markdownTheme = {
   h5: (props: any) => {
     const { children } = props;
     return (
-      <Heading as="h5" fontSize="md" sx={hStyle}>
+      <Heading id={children} as="h5" fontSize="md" sx={hStyle}>
         {children}
       </Heading>
     );
@@ -53,7 +53,7 @@ export const markdownTheme = {
     const { children } = props;
 
     return (
-      <Heading as="h6" fontSize="sm" sx={hStyle}>
+      <Heading id={children} as="h6" fontSize="sm" sx={hStyle}>
         {children}
       </Heading>
     );

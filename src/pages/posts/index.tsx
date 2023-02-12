@@ -1,6 +1,5 @@
 import fs from "fs";
 import { GetStaticProps } from "next";
-import "katex/dist/katex.min.css";
 
 import Header from "../../components/Header";
 import { Box, Flex } from "@chakra-ui/react";
