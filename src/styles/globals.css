@@ -106,3 +106,34 @@ a {
     color-scheme: dark;
   }
 } */
+
+.toc {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.toc-list .toc-list {
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  list-style: inside;
+}
+
+.toc-list-item {
+  padding-bottom: 0.5rem;
+  list-style: inside;
+}
+
+.toc-list-item:last-child {
+  padding-bottom: 0;
+}
+
+.toc-link {
+  font-weight: 500;
+  color: #777;
+}
+
+.is-active-link {
+  color: #d53f8c;
+  font-weight: 800;
+}

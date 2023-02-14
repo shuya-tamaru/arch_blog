@@ -2,7 +2,6 @@ import { Box, VStack, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import tocbot from "tocbot";
 import { Noto_Sans_JP } from "@next/font/google";
-import classes from "../styles/tocbot.module.css";
 
 const notoSansJp = Noto_Sans_JP({
   subsets: ["latin"],
@@ -16,6 +15,7 @@ export default function TableContents() {
       contentSelector: ".contents",
       headingSelector: "h1, h2, h3, h4",
       hasInnerContainers: true,
+      collapseDepth: 6,
     });
 
     return () => tocbot.destroy();
