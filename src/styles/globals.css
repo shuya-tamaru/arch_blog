@@ -129,11 +129,11 @@ a {
 }
 
 .toc-link {
-  font-weight: 500;
-  color: #777;
+  font-weight: 600;
+  color: #888;
 }
 
 .is-active-link {
-  color: #d53f8c;
+  color: #ff2468;
   font-weight: 800;
 }

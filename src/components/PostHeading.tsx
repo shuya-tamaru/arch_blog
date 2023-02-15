@@ -12,14 +12,19 @@ import React from "react";
 export default function PostHeading() {
   return (
     <>
-      <VStack spacing={1} w="100%">
+      <VStack spacing={1} w="100%" color="#666">
         <Flex w="100%">
           <Avatar
             size="sm"
             name="Shuya Tamaru"
             src="https://bit.ly/broken-link"
           />
-          <Center ml="10px" fontSize="xl" alignItems={"center"}>
+          <Center
+            ml="10px"
+            fontSize="xl"
+            alignItems={"center"}
+            fontWeight="600"
+          >
             <Link>UserName</Link>
           </Center>
         </Flex>

@@ -19,8 +19,8 @@ export default function CircleIcon({ iconType }: Props) {
   const falseColor = "#666";
   const asLikeProps = isClicked ? AiFillHeart : AiOutlineHeart;
   const asStockProps = isClicked ? BsBookmarkCheckFill : BsFillBookmarkPlusFill;
-  const colorLikeProps = isClicked ? "red.400" : falseColor;
-  const colorStockProps = isClicked ? "teal.400" : falseColor;
+  const colorLikeProps = isClicked ? "#ff2468" : falseColor;
+  const colorStockProps = isClicked ? "#ff2468" : falseColor;
 
   const handleClick = async () => {
     await setIsClicked(!isClicked);

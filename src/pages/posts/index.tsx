@@ -6,6 +6,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import SideIconsBar from "../../components/SideIconsBar";
 import TableContents from "../../components/TableContents";
 import PostContents from "../../components/PostContents";
+import Footer from "../../components/Footer";
 
 type StaticProps = {
   post: string;
@@ -28,6 +29,7 @@ export default function Posts(props: StaticProps) {
           <TableContents />
         </Flex>
       </Flex>
+      <Footer />
     </>
   );
 }

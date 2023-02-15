@@ -14,6 +14,7 @@ import SubmidButtons from "../../components/SubmidButtons";
 import Header from "../../components/Header";
 import TitleAndTagInput from "../../components/TitleAndTagInput";
 import MarkDownPreview from "../../components/MarkDownPreview";
+import Footer from "../../components/Footer";
 
 export default function Editor() {
   const [input, setInput] = useState<string>("");
@@ -167,6 +168,7 @@ export default function Editor() {
         </Flex>
         <SubmidButtons />
       </Stack>
+      <Footer />
     </>
   );
 }

@@ -28,7 +28,13 @@ export default function TableContents() {
         sx={tableContainerStyle}
         className={notoSansJp.className}
       >
-        <Text textAlign={"center"} fontWeight="800" mb="5px">
+        <Text
+          textAlign={"center"}
+          fontWeight="800"
+          mb="5px"
+          color="#666"
+          fontSize={"md"}
+        >
           目&emsp;次
         </Text>
         <Box fontSize={"sm"} className={`toc`}></Box>
