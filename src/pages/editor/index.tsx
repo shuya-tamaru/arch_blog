@@ -1,24 +1,46 @@
 import { Box, Checkbox, Flex, Stack, Text, Textarea } from "@chakra-ui/react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import ChakraUIRenderer from "chakra-ui-markdown-renderer";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import { useDropzone } from "react-dropzone";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import classes from "../../styles/textArea.module.css";
 import "../../styles/Home.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { markdownTheme } from "../../libs/MarkDownTheme";
 import SubmidButtons from "../../components/SubmidButtons";
-import Header from "../../components/Header";
 import TitleAndTagInput from "../../components/TitleAndTagInput";
 import MarkDownPreview from "../../components/MarkDownPreview";
-import Footer from "../../components/Footer";
+import EditorPageHeader from "../../components/EditorPageHeader";
 
 export default function Editor() {
   const [input, setInput] = useState<string>("");
   const [scrollSync, setScrollSync] = useState<boolean>(true);
+  const [dropImages, setDropImages] = useState<string[]>([]);
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const paths = acceptedFiles.map((file) => {
+      const path = `![image info](./${file.name})`;
+      return path;
+    });
+    setDropImages(paths);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    noClick: true,
+    noKeyboard: true,
+  });
+
+  useEffect(() => {
+    if (dropImages.length > 0) {
+      const textArea = document.querySelector("#editor") as HTMLTextAreaElement;
+      let sentence = textArea.value;
+      const len = sentence.length;
+      const pos = textArea.selectionStart;
+      const before = sentence.substring(0, pos);
+      const word = dropImages;
+      const after = sentence.substring(pos, len);
+      sentence = before + word.join() + after;
+      setInput(sentence);
+      setDropImages([]);
+    }
+  }, [dropImages]);
 
   const scroll = useCallback(() => {
     const textArea = document.querySelector("#editor") as HTMLTextAreaElement;
@@ -82,7 +104,7 @@ export default function Editor() {
 
   return (
     <>
-      <Header />
+      <EditorPageHeader />
       <Stack
         spacing={"10px"}
         bg="#eaedf0"
@@ -108,6 +130,7 @@ export default function Editor() {
               </Box>
             </Box>
             <Textarea
+              {...getRootProps()}
               id={"editor"}
               sx={texteAreaStyle}
               placeholder="マークダウン記法で記述しよう！"
@@ -115,6 +138,7 @@ export default function Editor() {
               variant="undefined"
               onChange={(e) => setInput(e.target.value)}
             />
+            <input {...getInputProps()} style={{ height: "0px" }} />
           </Box>
           <Box w="45%" h="100%">
             <Flex w="100%" h="40px">
@@ -168,7 +192,6 @@ export default function Editor() {
         </Flex>
         <SubmidButtons />
       </Stack>
-      <Footer />
     </>
   );
 }

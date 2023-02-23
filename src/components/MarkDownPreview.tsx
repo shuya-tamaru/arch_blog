@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+
 import classes from "../styles/textArea.module.css";
 import { markdownTheme } from "../libs/MarkDownTheme";
 
