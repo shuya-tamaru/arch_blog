@@ -1,18 +1,12 @@
-import {
-  Flex,
-  Text,
-  VStack,
-  Icon,
-  Avatar,
-  Center,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Flex, Text, VStack, Icon, Avatar, Center } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { HiOutlineBell } from "react-icons/hi";
 
 const EditorPageHeader = () => {
+  const router = useRouter();
   return (
     <>
-      <Flex w="100%" justify={"space-between"} bg={"#224F74"} color="#fff">
+      <Flex w="100%" justify={"space-between"} bg={"#262B5C"} color="#fff">
         <Flex w="15%" />
         <Flex w="70%" h="63px">
           <VStack w="100%" h="100%">
@@ -23,7 +17,15 @@ const EditorPageHeader = () => {
               fontSize={"3xl"}
               justify={"space-between"}
             >
-              <Text lineHeight={"63px"}>header</Text>
+              <Text
+                lineHeight={"63px"}
+                cursor={"pointer"}
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
+                header
+              </Text>
               <Flex>
                 <Icon
                   as={HiOutlineBell}

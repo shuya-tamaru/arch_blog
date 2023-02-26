@@ -93,3 +93,5 @@ const CodeBlack: CodeComponent = ({ inline, className, children }) => {
 export default CodeBlack;
 
 ```
+
+## 意匠について

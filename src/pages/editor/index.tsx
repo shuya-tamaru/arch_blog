@@ -1,7 +1,7 @@
 import { Box, Checkbox, Flex, Stack, Text, Textarea } from "@chakra-ui/react";
 import "katex/dist/katex.min.css";
 import { useDropzone } from "react-dropzone";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import "../../styles/Home.module.css";
 import SubmidButtons from "../../components/SubmidButtons";
@@ -13,6 +13,7 @@ export default function Editor() {
   const [input, setInput] = useState<string>("");
   const [scrollSync, setScrollSync] = useState<boolean>(true);
   const [dropImages, setDropImages] = useState<string[]>([]);
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const paths = acceptedFiles.map((file) => {
       const path = `![image info](./${file.name})`;

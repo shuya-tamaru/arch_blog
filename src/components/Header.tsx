@@ -12,15 +12,18 @@ import {
   Fade,
   InputGroup,
   InputRightAddon,
+  Link,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { HiOutlineBell, HiSearch, HiOutlinePencil } from "react-icons/hi";
 
 const Header = () => {
   const { isOpen, onToggle } = useDisclosure();
+  const router = useRouter();
 
   return (
     <>
-      <Flex w="100%" justify={"space-between"} bg={"#224F74"} color="#fff">
+      <Flex w="100%" justify={"space-between"} bg={"#262B5C"} color="#fff">
         <Flex w="15%" />
         <Flex w="70%" h="120px">
           <VStack w="100%" h="100%">
@@ -31,7 +34,15 @@ const Header = () => {
               fontSize={"3xl"}
               justify={"space-between"}
             >
-              <Text lineHeight={"72px"}>header</Text>
+              <Text
+                lineHeight={"72px"}
+                cursor={"pointer"}
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
+                header
+              </Text>
               <Flex>
                 <Center>
                   <Fade in={isOpen}>
@@ -101,8 +112,17 @@ const Header = () => {
                       color: "#ff2468",
                     }}
                     leftIcon={<HiOutlinePencil size={"20px"} />}
+                    onClick={() => {
+                      router.push("/editor");
+                    }}
                   >
-                    Add New
+                    <Link
+                      _hover={{ textDecoration: "none" }}
+                      variant={"none"}
+                      href={"/editor"}
+                    >
+                      Add New
+                    </Link>
                   </Button>
                 </Center>
               </Flex>

@@ -22,12 +22,8 @@ export default function TableContents() {
   }, []);
 
   return (
-    <VStack>
-      <Box
-        position={"sticky"}
-        sx={tableContainerStyle}
-        className={notoSansJp.className}
-      >
+    <VStack w="100%" h="600px" overflowY={"scroll"}>
+      <Box sx={tableContainerStyle} className={notoSansJp.className}>
         <Text
           textAlign={"center"}
           fontWeight="800"
@@ -44,7 +40,7 @@ export default function TableContents() {
 }
 
 const tableContainerStyle = {
-  top: "20px",
+  w: "100%",
   bg: "#fff",
   p: "20px",
   borderRadius: "5px",
