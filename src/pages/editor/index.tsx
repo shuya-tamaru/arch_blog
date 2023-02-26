@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { useCallback, useEffect, useState } from "react";
 
 import "../../styles/Home.module.css";
-import SubmidButtons from "../../components/SubmidButtons";
+import SubmitButtons from "../../components/SubmitButtons";
 import TitleAndTagInput from "../../components/TitleAndTagInput";
 import MarkDownPreview from "../../components/MarkDownPreview";
 import EditorPageHeader from "../../components/EditorPageHeader";
@@ -191,7 +191,7 @@ export default function Editor() {
             </Box>
           </Box>
         </Flex>
-        <SubmidButtons />
+        <SubmitButtons />
       </Stack>
     </>
   );

@@ -2,7 +2,7 @@ import { Box, Button, HStack } from "@chakra-ui/react";
 import { FiSave } from "react-icons/fi";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 
-const SubmidButtons = () => {
+const SubmitButtons = () => {
   return (
     <>
       <Box h="50px" w="90%">
@@ -12,7 +12,12 @@ const SubmidButtons = () => {
               leftIcon={<FiSave size={25} />}
               w="150px"
               variant="outline"
-              colorScheme="red"
+              color=" #ff2468"
+              border="2px solid #ff2468"
+              transition="0.5s"
+              _hover={{
+                opacity: "0.6",
+              }}
             >
               下書き保存
             </Button>
@@ -21,7 +26,13 @@ const SubmidButtons = () => {
           <Button
             leftIcon={<HiOutlineDocumentAdd size={25} />}
             w="150px"
-            colorScheme="red"
+            bg={"#ff2468"}
+            color="#fff"
+            border="2px solid #ff2468"
+            transition="0.5s"
+            _hover={{
+              opacity: "0.6",
+            }}
           >
             投&emsp;稿
           </Button>
@@ -31,4 +42,4 @@ const SubmidButtons = () => {
   );
 };
 
-export default SubmidButtons;
+export default SubmitButtons;
