@@ -20,7 +20,7 @@ const SearchBar = () => {
             <InputGroup>
               <Input
                 w="800px"
-                placeholder="Search Post"
+                placeholder="Search"
                 bg="#fff"
                 color="#333"
                 variant="undefined"

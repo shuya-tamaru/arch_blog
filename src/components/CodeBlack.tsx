@@ -2,10 +2,12 @@ import { CodeComponent } from "react-markdown/lib/ast-to-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { CopyIcon } from "@chakra-ui/icons";
+import { TwitterTweetEmbed } from "react-twitter-embed";
+import YouTube from "react-youtube";
 
 import { escapeHtml } from "../libs/EscapeHtml";
 import classes from "../styles/textArea.module.css";
-import { Box, Text, Tooltip, useClipboard } from "@chakra-ui/react";
+import { Box, Center, Text, Tooltip, useClipboard } from "@chakra-ui/react";
 import { useEffect } from "react";
 
 const CodeBlack: CodeComponent = ({ inline, className, children }) => {
@@ -15,13 +17,25 @@ const CodeBlack: CodeComponent = ({ inline, className, children }) => {
     return <code className={className}>{children}</code>;
   }
   const match = /language-(\w+)/.exec(className || "language-plaintext");
+  const lang = match && match[1];
   const filename = match ? className?.split(":")[1] ?? undefined : undefined;
 
   useEffect(() => {
     setValue(children[0] as string);
   }, [children]);
 
-  return (
+  return lang === "twitter" ? (
+    <Box margin={"0 auto"} w="50%">
+      <TwitterTweetEmbed
+        placeholder={"Loading…"}
+        tweetId={filename as string}
+      />
+    </Box>
+  ) : lang === "youtube" ? (
+    <Center>
+      <YouTube videoId={filename as string} />
+    </Center>
+  ) : (
     <>
       {filename && (
         <Box className={classes.codeBlockFileNameContainer}>

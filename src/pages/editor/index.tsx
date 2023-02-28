@@ -16,7 +16,7 @@ export default function Editor() {
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const paths = acceptedFiles.map((file) => {
-      const path = `![image info](./${file.name})`;
+      const path = `![タイトル w:50%](./${file.name})`;
       return path;
     });
     setDropImages(paths);
