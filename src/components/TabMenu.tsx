@@ -24,6 +24,7 @@ const TabMenu = () => {
                   _selected={{
                     color: "#fff",
                     borderColor: "#fff",
+                    borderBottom: "none",
                   }}
                 >
                   {val}

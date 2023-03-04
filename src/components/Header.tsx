@@ -13,36 +13,41 @@ const Header = () => {
   return (
     <>
       <Flex w="100%" justify={"space-between"} bg={"#262B5C"} color="#fff">
-        <Flex w="15%" />
+        <Flex
+          w="15%"
+          fontWeight={800}
+          fontSize={"3xl"}
+          justify={"center"}
+          lineHeight={"72px"}
+          cursor={"pointer"}
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          header
+        </Flex>
         <Flex w="70%" h="120px">
           <VStack w="100%" h="100%">
-            <Flex
-              w="100%"
-              h="60%"
-              fontWeight={800}
-              fontSize={"3xl"}
-              justify={"space-between"}
-            >
-              <Text
-                lineHeight={"72px"}
-                cursor={"pointer"}
-                onClick={() => {
-                  router.push("/");
-                }}
-              >
-                header
-              </Text>
-              <Flex>
+            <Flex w="100%" h="60%">
+              <Flex w="100%">
                 <SearchBar />
-                <AlertIcon />
-                <UserAvator />
-                <AddPostButton />
               </Flex>
             </Flex>
             <TabMenu />
           </VStack>
         </Flex>
-        <Flex w="15%" />
+        <Flex
+          pt="10px"
+          w="15%"
+          fontWeight={800}
+          fontSize={"3xl"}
+          justify={"space-between"}
+          // lineHeight={"72px"}
+        >
+          <AlertIcon />
+          <UserAvator />
+          <AddPostButton />
+        </Flex>
       </Flex>
     </>
   );

@@ -14,12 +14,13 @@ const SearchBar = () => {
 
   return (
     <>
-      <Center>
-        <Fade in={isOpen}>
-          <Center>
-            <InputGroup>
+      <Center w="100%">
+        <Fade in={isOpen} style={{ width: "80%" }}>
+          <Center w="100%">
+            <InputGroup id="ccccccc" w="100%">
               <Input
-                w="800px"
+                display={"inline-block"}
+                w="100%"
                 placeholder="Search"
                 bg="#fff"
                 color="#333"
