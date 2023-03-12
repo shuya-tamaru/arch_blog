@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Text, VStack } from "@chakra-ui/react";
+import { Flex, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import AddPostButton from "./AddPostButton";
