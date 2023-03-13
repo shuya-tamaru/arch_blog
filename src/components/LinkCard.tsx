@@ -1,8 +1,6 @@
 import {
-  Box,
   Card,
   CardBody,
-  CardFooter,
   Center,
   Flex,
   Heading,
@@ -22,6 +20,8 @@ type Props = {
 
 const LinkCard = ({ image, href, title, description, icon }: Props) => {
   const siteName = href.split("/")[2];
+  const regexp = /.png|.jpeg|.jpg/;
+  const isImage = regexp.test(image);
   return (
     <Link href={href} isExternal w="100%">
       <Card
@@ -30,7 +30,7 @@ const LinkCard = ({ image, href, title, description, icon }: Props) => {
         variant="outline"
         h="150px"
       >
-        {image && <Image objectFit="cover" w="auto" h="100%" src={image} />}
+        {isImage && <Image objectFit="cover" w="auto" h="100%" src={image} />}
 
         <Stack h="150px" w="800px">
           <CardBody w="60%" h="100%">
