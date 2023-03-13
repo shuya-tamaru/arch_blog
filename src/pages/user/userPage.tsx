@@ -37,10 +37,16 @@ const userPage = () => {
                   p="20px"
                   overflowY={"scroll"}
                 >
-                  <Text borderBottom={"1px solid #333"} fontWeight={500}>
-                    <Icon as={RiArticleLine} mr="10px" boxSize={5} />
+                  <Flex
+                    borderBottom={"1px solid #333"}
+                    fontWeight={500}
+                    justify="start"
+                  >
+                    <Center>
+                      <Icon as={RiArticleLine} mr="10px" boxSize={5} />
+                    </Center>
                     投稿記事
-                  </Text>
+                  </Flex>
                   <SimpleGrid columns={2} spacing={5} mt="10px" h="90%">
                     <PostCard />
                     <PostCard />

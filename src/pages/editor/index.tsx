@@ -187,7 +187,7 @@ export default function Editor() {
               borderRadius={"0px 10px 10px 0px"}
               bg="#fff"
             >
-              <MarkDownPreview input={input} />
+              <MarkDownPreview input={input} metas={[]} />
             </Box>
           </Box>
         </Flex>
@@ -196,6 +196,7 @@ export default function Editor() {
     </>
   );
 }
+
 const search = "# h";
 const containerStyle = {
   w: "45%",
