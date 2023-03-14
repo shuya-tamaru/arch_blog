@@ -1,15 +1,4 @@
-import {
-  Box,
-  Heading,
-  Image,
-  Td,
-  Text,
-  Th,
-  VStack,
-  Link,
-  Flex,
-} from "@chakra-ui/react";
-// import Link from "next/link";
+import { Box, Heading, Image, Text, VStack, Link } from "@chakra-ui/react";
 import CodeBlack from "../components/CodeBlack";
 import LinkCard from "../components/LinkCard";
 
@@ -73,15 +62,11 @@ export const markdownTheme = (metas: any[]) => {
       const { children, href } = props;
       const target = metas.find((meta) => meta.url === href);
 
-      return target.title === "" && target.image === "" ? (
-        <Link
-          _hover={{ textDecoration: "none" }}
-          style={{ color: "#0366d6", borderBottom: "1px solid #0366d6" }}
-          href={href}
-        >
-          {children}
-        </Link>
-      ) : (
+      return target &&
+        target.title &&
+        target.image &&
+        target.title !== "" &&
+        target.image !== "" ? (
         <LinkCard
           image={target.image}
           href={target.url}
@@ -89,6 +74,14 @@ export const markdownTheme = (metas: any[]) => {
           description={target.description}
           icon={target.icon}
         />
+      ) : (
+        <Link
+          _hover={{ textDecoration: "none" }}
+          style={{ color: "#0366d6", borderBottom: "1px solid #0366d6" }}
+          href={href}
+        >
+          {children}
+        </Link>
       );
     },
     th: (props: any) => {

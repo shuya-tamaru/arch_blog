@@ -1,4 +1,4 @@
-import { Center, Button, Link } from "@chakra-ui/react";
+import { Button, Link } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { HiOutlinePencil } from "react-icons/hi";
 
@@ -7,10 +7,11 @@ const AddPostButton = () => {
   return (
     <>
       <Button
-        w="60%"
+        w="50%"
         bg="#ff2468"
         textAlign={"center"}
         mt="5px"
+        mr="15px"
         size="sm"
         fontWeight={900}
         border="2px solid #ff2468"

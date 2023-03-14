@@ -7,7 +7,15 @@ import YouTube from "react-youtube";
 
 import { escapeHtml } from "../libs/EscapeHtml";
 import classes from "../styles/textArea.module.css";
-import { Box, Center, Text, Tooltip, useClipboard } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Center,
+  Text,
+  Tooltip,
+  useClipboard,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 
 const CodeBlack: CodeComponent = ({ inline, className, children }) => {
@@ -35,6 +43,31 @@ const CodeBlack: CodeComponent = ({ inline, className, children }) => {
     <Center>
       <YouTube videoId={filename as string} />
     </Center>
+  ) : lang === "error" ||
+    lang === "success" ||
+    lang === "warning" ||
+    lang === "info" ? (
+    <Alert
+      w="100%"
+      variant="left-accent"
+      borderRadius={"5px"}
+      status={lang}
+      fontSize={"sm"}
+      color={"#777"}
+      // whiteSpace="unset"
+    >
+      <AlertIcon />
+      <Box w="95%" fontWeight={600} whiteSpace="normal">
+        <Text
+          display={"inline-block"}
+          w="100%"
+          fontWeight={600}
+          sx={{ wordBreak: "break-word" }}
+        >
+          {value}
+        </Text>
+      </Box>
+    </Alert>
   ) : (
     <>
       {filename && (
